@@ -36,6 +36,9 @@ kIntakeLauncherSpeed = -1
 kIntakeFeederSpeed = -0.2
 kLauncherDelay = 1
 
+# Climber 
+climbMotor = 7
+
 # Autos
 kAutoTurnAmp = 0.1
 kAutoTurnFeed = 0
