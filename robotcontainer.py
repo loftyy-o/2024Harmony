@@ -84,8 +84,12 @@ class RobotContainer:
             .handleInterrupt(lambda: self.launcher.stop()))
 
         commands2.button.JoystickButton(self.driverController, wpilib.XboxController.Button.kLeftBumper).whileTrue(self.launcher.getIntakeCommand())
-        commands2.button.JoystickButton(self.driverController, wpilib.XboxController.Button.kY).whileTrue(self.climber.climb_positive())
-        commands2.button.JoystickButton(self.driverController, wpilib.XboxController.Button.kA).whileTrue(self.climber.climb_negative())
+  
+        #climb control
+        commands2.button.JoystickButton(self.driverController, wpilib.XboxController.Button.kY).whileTrue(self.climber.climb_positive()).onFalse(self.climber.climb_stop())
+        
+        commands2.button.JoystickButton(self.driverController, wpilib.XboxController.Button.kA).whileTrue(self.climber.climb_negative()).onFalse(self.climber.climb_stop())
+
     def getAutonomousCommand(self) -> commands2.Command:
         pass
        # Autos.exampleAuto(self.drive)

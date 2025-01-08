@@ -16,9 +16,13 @@ class ClimberSubsystem(commands2.Subsystem):
 
     #Not sure which output goes where so I made 2 differenct function of bot positive and negative output
     def climb_positive(self) -> None:
-        self.climbMotor.set_control(DutyCycleOut(0.3, enable_foc=True))
+        self.climbMotor.set_control(DutyCycleOut(0.3))
+
+    def climb_stop(self) -> None:
+        self.climbMotor.set_control(DutyCycleOut(0))
+ 
 
     def climb_negative(self) -> None:
-        self.climbMotor.set_control(DutyCycleOut(-0.3, enable_foc=True))
+        self.climbMotor.set_control(DutyCycleOut(-0.3))
         
         
