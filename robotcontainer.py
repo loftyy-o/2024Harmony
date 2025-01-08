@@ -16,6 +16,7 @@ import commands2
 
 from subsystems.drivetrain import DriveSubsystem
 from subsystems.launcher import LauncherSubsystem
+from subsystems.climber import ClimberSubsystem
 
 from wpilib import SendableChooser
 
@@ -43,6 +44,7 @@ class RobotContainer:
         # The robot's subsystems
         self.drive = DriveSubsystem()
         self.launcher = LauncherSubsystem()
+        self.climber = ClimberSubsystem()
 
         self.configureButtonBindings()
 
@@ -82,7 +84,8 @@ class RobotContainer:
             .handleInterrupt(lambda: self.launcher.stop()))
 
         commands2.button.JoystickButton(self.driverController, wpilib.XboxController.Button.kLeftBumper).whileTrue(self.launcher.getIntakeCommand())
-
+        commands2.button.JoystickButton(self.driverController, wpilib.XboxController.Button.kY).whileTrue(self.climber.climb_positive())
+        commands2.button.JoystickButton(self.driverController, wpilib.XboxController.Button.kA).whileTrue(self.climber.climb_negative())
     def getAutonomousCommand(self) -> commands2.Command:
         pass
        # Autos.exampleAuto(self.drive)

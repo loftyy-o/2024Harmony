@@ -14,7 +14,11 @@ class ClimberSubsystem(commands2.Subsystem):
         climbing_config = TalonFXConfiguration()
         climbing_config.motor_output.with_neutral_mode(NeutralModeValue.BRAKE)
 
-    def climb(self) -> None:
+    #Not sure which output goes where so I made 2 differenct function of bot positive and negative output
+    def climb_positive(self) -> None:
         self.climbMotor.set_control(DutyCycleOut(0.3, enable_foc=True))
+
+    def climb_negative(self) -> None:
+        self.climbMotor.set_control(DutyCycleOut(-0.3, enable_foc=True))
         
         
